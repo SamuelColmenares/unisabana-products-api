@@ -1,4 +1,4 @@
-# 🚀 RESTful Architecture Demo (.NET 9 + Aspire)
+# 🚀 RESTful Architecture Demo (.NET 10 + Aspire)
 
 Este proyecto es una demostración técnica de una arquitectura **RESTful de alta madurez**, diseñada para ser escalable, desacoplada y eficiente. Utiliza **.NET 10** y **.NET Aspire** para la orquestación y monitoreo de servicios.
 
