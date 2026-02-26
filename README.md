@@ -18,7 +18,7 @@ El ejemplo implementa un CRUD completo de productos, integrando conceptos avanza
 ### 1. Desde la Interfaz Gráfica (Visual Studio / Rider)
 1. Abre la solución en tu IDE favorito.
 2. Asegúrate de tener instalado el **SDK de .NET 10** y la carga de trabajo de **.NET Aspire**.
-3. Selecciona el proyecto **`MyProject.AppHost`** como proyecto de inicio.
+3. Selecciona el proyecto **`ProductsApi.AppHost`** como proyecto de inicio.
 4. Haz clic en el botón **Ejecutar** (usando el perfil de `https`).
 5. Se abrirá automáticamente el Dashboard de .NET Aspire en el puerto `17145`.
 
@@ -28,7 +28,7 @@ El ejemplo implementa un CRUD completo de productos, integrando conceptos avanza
 Navega hasta la carpeta raíz del proyecto o específicamente a la carpeta del `AppHost` y ejecuta:
 
 ```bash
-dotnet run --project MyProject.AppHost
+dotnet run --project ProductsApi.AppHost
 ```
 ---
 ## 🧪 Pruebas con Scalar UI
