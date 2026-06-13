@@ -22,12 +22,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Autenticar con Google Cloud
-        id: auth
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
           service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
-          token_format: access_token
 
       - name: Configurar gcloud
         uses: google-github-actions/setup-gcloud@v2
