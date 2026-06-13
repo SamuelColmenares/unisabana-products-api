@@ -42,7 +42,7 @@ jobs:
   cd:
     name: Build Image and Deploy
     runs-on: ubuntu-latest
-    needs: ci # <-- CRUCIAL: Solo se ejecuta si el job 'ci' termina con éxito
+    needs: ci 
     permissions:
       contents: read
       id-token: write   
