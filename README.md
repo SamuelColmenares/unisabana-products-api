@@ -64,3 +64,54 @@ El corazón de nuestra documentación es el archivo **OpenAPI JSON**. Este es un
 | **Scalar UI (Visor de pruebas)** | [https://localhost:7187/scalar](https://localhost:7187/scalar) |
 
 ---
+```
+ProductsApi
+├─ .dockerignore
+├─ LICENSE
+├─ ProductsApi
+│  ├─ appsettings.Development.json
+│  ├─ appsettings.json
+│  ├─ Controllers
+│  │  └─ ProductsController.cs
+│  ├─ Dockerfile
+│  ├─ Infraestructure
+│  │  ├─ IProductAcl.cs
+│  │  ├─ JsonPlaceholderAcl.cs
+│  │  └─ Persistence
+│  │     ├─ IProductRepository.cs
+│  │     └─ ProductMemoryStore.cs
+│  ├─ Models
+│  │  ├─ ExternalTodo.cs
+│  │  ├─ Product.cs
+│  │  └─ Result.cs
+│  ├─ ProductsApi.csproj
+│  ├─ ProductsApi.csproj.user
+│  ├─ ProductsApi.http
+│  ├─ Program.cs
+│  └─ Properties
+│     └─ launchSettings.json
+├─ ProductsApi.AppHost
+│  ├─ AppHost.cs
+│  ├─ appsettings.Development.json
+│  ├─ appsettings.json
+│  ├─ ProductsApi.AppHost.csproj
+│  └─ Properties
+│     └─ launchSettings.json
+├─ ProductsApi.ServiceDefaults
+│  ├─ Extensions.cs
+│  └─ ProductsApi.ServiceDefaults.csproj
+├─ ProductsApi.slnx
+├─ ProductsApi.Tests
+│  ├─ Controllers
+│  │  └─ ProductsControllerTests.cs
+│  ├─ Infraestructure
+│  │  └─ Persistence
+│  │     └─ ProductMemoryStoreTests.cs
+│  ├─ Models
+│  │  ├─ ProductTests.cs
+│  │  └─ ResultTests.cs
+│  ├─ ProductsApi.Tests.csproj
+│  └─ README.md
+└─ README.md
+
+```

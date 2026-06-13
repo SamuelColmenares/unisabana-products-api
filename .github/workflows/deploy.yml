@@ -1,4 +1,4 @@
-name: Deploy to Cloud Run
+name: CI/CD Pipeline to Cloud Run
 
 on:
   push:
@@ -8,12 +8,41 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   REGION: us-central1
   SERVICE_NAME: products-api
-  # Aseguramos el nombre de la variable para usarla consistentemente abajo
   IMAGE_NAME: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mi-app/products-api
 
 jobs:
-  deploy:
+  # ==========================================
+  # 1. TRABAJO DE INTEGRACIÓN CONTINUA (CI)
+  # ==========================================
+  ci:
+    name: Run Unit Tests
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restaurar Dependencias
+        run: dotnet restore ProductsApi.slnx
+
+      - name: Compilar Solución
+        run: dotnet build ProductsApi.slnx --configuration Release --no-restore
+
+      - name: Ejecutar Pruebas Unitarias
+        run: dotnet test ProductsApi.slnx --configuration Release --no-build --verbosity normal
+
+  # ==========================================
+  # 2. TRABAJO DE DESPLIEGUE CONTINUO (CD)
+  # ==========================================
+  cd:
+    name: Build Image and Deploy
+    runs-on: ubuntu-latest
+    needs: ci # <-- CRUCIAL: Solo se ejecuta si el job 'ci' termina con éxito
     permissions:
       contents: read
       id-token: write   
@@ -40,7 +69,6 @@ jobs:
           username: oauth2accesstoken
           password: ${{ steps.auth.outputs.access_token }}
 
-      # Ajuste clave aquí para mapear el Dockerfile correctamente
       - name: Build y push imagen Docker
         run: |
           docker build \
